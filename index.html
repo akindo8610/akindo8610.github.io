@@ -13,12 +13,15 @@
             padding: 0;
             background-color: #f9f9f9;
             color: #333;
+            display: flex;
+            flex-direction: column;
         }
         header {
             background: #0077cc;
             color: #fff;
             padding: 1rem 0;
             text-align: center;
+            width: 100%;
         }
         header h1 {
             margin: 0;
@@ -33,6 +36,7 @@
             justify-content: center;
             background: #005fa3;
             padding: 0.5rem;
+            width: 100%;
         }
         nav a {
             color: #fff;
@@ -43,31 +47,44 @@
         nav a:hover {
             text-decoration: underline;
         }
-        .categories {
+        .content {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 2rem;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 1rem;
+        }
+        .main {
+            flex: 3;
+            padding: 1rem;
+        }
+        .sidebar {
+            flex: 1;
+            padding: 1rem;
+            background-color: #f0f8ff;
+            border-left: 1px solid #ddd;
+        }
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
         }
         .category {
             background: #fff;
             border: 1px solid #ddd;
             border-radius: 8px;
-            margin: 1rem;
-            padding: 1.5rem;
-            width: 250px;
+            padding: 1rem;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 350px; /* 高さを揃える */
         }
         .category img {
             max-width: 100%;
-            height: 150px; /* 画像の高さを統一 */
-            object-fit: cover; /* 画像が均等に収まる */
+            height: 150px;
             border-radius: 4px;
+            object-fit: cover;
         }
         .category h2 {
             margin: 1rem 0 0.5rem;
@@ -89,12 +106,48 @@
         .category a:hover {
             background: #005fa3;
         }
+        .affiliate {
+            border: 2px solid #0077cc;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            background: #f9f9f9;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .affiliate h2 {
+            font-size: 1.2rem;
+            color: #0077cc;
+            margin-bottom: 0.5rem;
+        }
+        .affiliate p {
+            font-size: 0.9rem;
+            color: #333;
+            line-height: 1.4;
+        }
+        .affiliate a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            color: #fff;
+            background: #0077cc;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .affiliate a:hover {
+            background: #005fa3;
+            transform: scale(1.05);
+        }
         footer {
             background: #333;
             color: #fff;
             text-align: center;
             padding: 1rem 0;
             margin-top: 2rem;
+            width: 100%;
         }
     </style>
 </head>
@@ -110,42 +163,65 @@
         <a href="#toeic">TOEIC編</a>
         <a href="#column">コラム</a>
     </nav>
-    <main>
-        <section class="categories">
-            <div class="category" id="test">
-                <img src="images/PAK85_desk15215645_TP_V4.jpg" alt="テスト勉強">
-                <h2>テスト勉強編</h2>
-                <p>大学のテストに向けた勉強記録と反省</p>
-                <a href="#">もっと見る</a>
+    <div class="content">
+        <main class="main">
+            <section class="categories">
+                <div class="category" id="test">
+                    <img src="images/PAK85_desk15215645_TP_V4.jpg" alt="テスト勉強">
+                    <h2>テスト勉強編</h2>
+                    <p>大学のテストに向けた勉強記録と反省</p>
+                    <a href="#">もっと見る</a>
+                </div>
+                <div class="category" id="transfer">
+                    <img src="images/MIZUHO319011_TP_V4.jpg" alt="編入">
+                    <h2>編入編</h2>
+                    <p>編入試験に向けた準備と情報</p>
+                    <a href="#">もっと見る</a>
+                </div>
+                <div class="category" id="qualifications">
+                    <img src="images/shimari02007_TP_V4.jpg" alt="資格">
+                    <h2>資格編</h2>
+                    <p>簿記や他の資格取得を目指す道</p>
+                    <a href="#">もっと見る</a>
+                </div>
+                <div class="category" id="toeic">
+                    <img src="images/PAK75_englishchirabaru20141206204205_TP_V4.jpg" alt="TOEIC">
+                    <h2>TOEIC編</h2>
+                    <p>TOEICスコアアップのための挑戦</p>
+                    <a href="#">もっと見る</a>
+                </div>
+                <div class="category" id="column">
+                    <img src="images/zubotty2328_1DSC05626-l_TP_V4.jpg" alt="コラム">
+                    <h2>コラム</h2>
+                    <p>生活改善や経験談をお届け</p>
+                    <a href="#">もっと見る</a>
+                </div>
+            </section>
+        </main>
+        <aside class="sidebar">
+            <h2>おすすめ教材</h2>
+            <div class="affiliate">
+                <h2>英語学習の新定番！</h2>
+                <p>
+                    「3ヶ月の集中学習でTOEIC275点UPも出た新サービス！」<br>
+                    業界初・オンライン特化型専属コーチ。
+                </p>
+                <a href="https://px.a8.net/svt/ejp?a8mat=44WYMY+7KOJUA+3AQG+NTZCJ" target="_blank">詳細を見る &raquo;</a>
             </div>
-            <div class="category" id="transfer">
-                <img src="images/MIZUHO319011_TP_V4.jpg" alt="編入">
-                <h2>編入編</h2>
-                <p>編入試験に向けた準備と情報</p>
-                <a href="#">もっと見る</a>
+            <div class="affiliate">
+                <h2>他のおすすめ教材</h2>
+                <p>
+                    TOEICスコアアップのためのベストプランを確認！
+                </p>
+                <a href="https://example.com" target="_blank">今すぐチェック</a>
             </div>
-            <div class="category" id="qualifications">
-                <img src="images/shimari02007_TP_V4.jpg" alt="資格">
-                <h2>資格編</h2>
-                <p>簿記や他の資格取得を目指す道</p>
-                <a href="#">もっと見る</a>
-            </div>
-            <div class="category" id="toeic">
-                <img src="images/PAK75_englishchirabaru20141206204205_TP_V4.jpg" alt="TOEIC">
-                <h2>TOEIC編</h2>
-                <p>TOEICスコアアップのための挑戦</p>
-                <a href="#">もっと見る</a>
-            </div>
-            <div class="category" id="column">
-                <img src="images/zubotty2328_1DSC05626-l_TP_V4.jpg" alt="コラム">
-                <h2>コラム</h2>
-                <p>生活改善や経験談をお届け</p>
-                <a href="#">もっと見る</a>
-            </div>
-        </section>
-    </main>
+        </aside>
+    </div>
     <footer>
         <p>&copy; 2025 アキンドマインド. All rights reserved.</p>
+        <p>
+            当サイトではアフィリエイト広告を利用しています。リンクをクリックし商品を購入すると、運営者が報酬を受け取ることがあります。
+        </p>
     </footer>
 </body>
 </html>
